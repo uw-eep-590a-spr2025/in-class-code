@@ -1,3 +1,51 @@
+## Define a function
+## Takes in 2 sorted singly linked lists
+## Outputs 1 sorted singly linked list, such that the output has all the input
+##   elements, in sorted order (increasing)
+
+def combine(left_list, right_list):
+    combined_list = left_list + right_list  ## O(1)
+    return combined_list.sort()             ## O(n log n)
+## ==> O(n lg n)
+
+## Now make it linear time ( O(n))
+def combine_linear(left_list, right_list):
+    left_ptr = 0
+    right_ptr = 0
+    out = []
+
+    while left_ptr < len(left_list) and right_ptr < len(right_list):
+
+        if left_list[left_ptr] < right_list[right_ptr]:
+            ## "put this in output"
+            out.append(left_list[left_ptr])
+            ## inc left_ptr
+            left_ptr += 1
+            pass
+        else:
+            ## put right in output
+            out.append(right_list[right_ptr])
+            ## inc right_ptr
+            right_ptr += 1
+            pass
+
+    if left_ptr >= len(left_list):
+        ## gotta put everything from right in output
+        while right_ptr < len(right_list):
+            out.append(right_list[right_ptr])
+            right_ptr += 1
+    else:
+        while left_ptr < len(left_list):
+            out.append(left_list[left_ptr])
+            left_ptr += 1
+
+    return out
+
+
+
+
+
+
 
 ## Define a merge function
 ## Takes in 2 singly linked lists, represented as Python dictionaries
