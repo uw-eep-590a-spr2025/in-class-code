@@ -64,6 +64,11 @@ class TreeNode:
                 return None
             return self.left.find(target)
 
+    def find_smallest_in_tree(self):
+        if self.left:
+            return self.left.find_smallest_in_tree()
+        return self
+
     def delete_from_bst(self):
         ## Case 1: No children
         if not self.left and not self.right:
@@ -83,6 +88,18 @@ class TreeNode:
             else:
 
                 self.parent.left = child
+
+        ## Case 3: 2 children
+        if self.left and self.right:
+            successor = self.right.find_smallest_in_tree()
+            self.payload = successor.payload
+            del successor.parent.left
+            # if self.payload > self.parent.payload:
+            #     ## I'm the right child
+            #     ## Replace parent's right child with new successor
+            #     self.parent.right = successor
+            # else:
+            #     self.parent.left = successor
 
 
     def print_tree(self, prefix=''):
@@ -106,10 +123,13 @@ root.print_tree()
 print('=======\n\n')
 
 
-node_to_delete = root.find(5)
+node_to_delete = root.find(50)
 print(node_to_delete)
 node_to_delete.delete_from_bst()
 
 print('=======\n\n')
 
 root.print_tree()
+
+smallest = root.find_smallest_in_tree()
+print(smallest)
