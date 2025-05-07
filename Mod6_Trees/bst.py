@@ -94,12 +94,7 @@ class TreeNode:
             successor = self.right.find_smallest_in_tree()
             self.payload = successor.payload
             del successor.parent.left
-            # if self.payload > self.parent.payload:
-            #     ## I'm the right child
-            #     ## Replace parent's right child with new successor
-            #     self.parent.right = successor
-            # else:
-            #     self.parent.left = successor
+
 
 
     def print_tree(self, prefix=''):
