@@ -70,6 +70,7 @@ class TreeNode:
 
     def print_tree_iter_in_order(self):
         ## TODO: Not implemented yet!!
+        ## DFS, In-Order
         stack = []
         stack.append(self)
         while stack:
@@ -110,5 +111,8 @@ print(f'Joe is at height {joe.get_height()} ')
 print("\n\n\n")
 
 joe.print_tree_iter_bfs()
+
+print("\n\n\n")
+joe.print_tree_in_order()
 
 
