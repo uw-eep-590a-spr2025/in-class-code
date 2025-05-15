@@ -1,7 +1,7 @@
 
 ## List of nodes: []
 ## Each node has a name/value, list of neighbors
-
+## https://tinyurl.com/4z8hcvh7
 
 class Node:
     def __init__(self, value):
