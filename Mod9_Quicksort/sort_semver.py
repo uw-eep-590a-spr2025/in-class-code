@@ -12,7 +12,8 @@ from functools import cmp_to_key
 
 input = ['1.0.0-alpha',
 '0.0.1-testing',
-         # '11.11.0'
+         '13.11.0',
+         '11.11.0-foo',
 '2.0.4',
 '1.2.4',
 '1.2.4-charlie',
@@ -32,7 +33,7 @@ def compare_by_prerelease(semver1, semver2):
 
 ## Return
 def compare_semver(semver1, semver2):
-
+    print(f'Comparing {semver1} vs {semver2}')
     if '-' in semver1:
         main1, pre1 = semver1.split('-')
     else:
@@ -42,6 +43,9 @@ def compare_semver(semver1, semver2):
         main2, pre2 = semver2.split('-')
     else:
         main2, pre2 = semver2, ''
+
+    main1 = main1.split('.')
+    main2 = main2.split('.')
 
     ## Check Major
     if main1[0] != main2[0]:
@@ -67,6 +71,10 @@ def compare_semver(semver1, semver2):
 
 # out = compare_semver('3.1.2-jun26', '2.1.0')
 # print(out)
+
+v1 = sorted(input, reverse= True)
+
+print(v1)
 
 
 sorted_list = sorted(input, key=cmp_to_key(compare_semver), reverse = True)
